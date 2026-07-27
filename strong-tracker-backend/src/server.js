@@ -18,9 +18,14 @@ app.use(express.json());
 
 const programRoutes = require('./routes/programRoutes');
 const historyRoutes = require('./routes/historyRoutes');
+const authRoutes = require('./src/routes/authRoutes');
+const programRoutes = require('./src/routes/programRoutes');
 
 app.use('/api/programs', programRoutes);
 app.use('/api/history', historyRoutes);
+app.use('/api/auth', authRoutes);
+app.use('/api/programs', programRoutes);
+
 
 app.get('/', (req, res) => {
   res.send('Strong Tracker API Çalışıyor!');

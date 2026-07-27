@@ -1,24 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const {
+  getPrograms,
+  createProgram,
+  deleteProgram,
+} = require('../controllers/programController');
+const { protect } = require('../middlewares/authMiddleware');
 
-router.get('/', (req, res) => {
-  res.json({ message: 'Antrenman programları listelendi' });
-});
-
-router.post('/', (req, res) => {
-  res.json({ message: 'Yeni antrenman programı eklendi' });
-});
-
-router.get('/:id', (req, res) => {
-  res.json({ message: `${req.params.id} ID'li program detayı` });
-});
-
-router.put('/:id', (req, res) => {
-  res.json({ message: `${req.params.id} ID'li program güncellendi` });
-});
-
-router.delete('/:id', (req, res) => {
-  res.json({ message: `${req.params.id} ID'li program silindi` });
-});
+router.route('/').get(protect, getPrograms).post(protect, createProgram);
+router.route('/:id').delete(protect, deleteProgram);
 
 module.exports = router;
