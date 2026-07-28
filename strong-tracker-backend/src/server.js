@@ -16,15 +16,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+const authRoutes = require('./routes/authRoutes');
 const programRoutes = require('./routes/programRoutes');
 const historyRoutes = require('./routes/historyRoutes');
-const authRoutes = require('./src/routes/authRoutes');
-const programRoutes = require('./src/routes/programRoutes');
 
-app.use('/api/programs', programRoutes);
-app.use('/api/history', historyRoutes);
+
 app.use('/api/auth', authRoutes);
 app.use('/api/programs', programRoutes);
+app.use('/api/history', historyRoutes);
 
 
 app.get('/', (req, res) => {

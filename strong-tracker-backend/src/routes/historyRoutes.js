@@ -1,19 +1,17 @@
 const express = require('express');
 const router = express.Router();
+const {
+  getHistory,
+  createHistory,
+  deleteHistory,
+} = require('../controllers/historyController');
+const { protect } = require('../middlewares/authMiddleware');
 
+router.route('/')
+  .get(protect, getHistory)
+  .post(protect, createHistory);
 
-router.get('/', (req, res) => {
-  res.json({ message: 'Antrenman geçmişi listelendi' });
-});
-
-
-router.post('/', (req, res) => {
-  res.json({ message: 'Tamamlanan antrenman geçmişe kaydedildi' });
-});
-
-
-router.delete('/:id', (req, res) => {
-  res.json({ message: `${req.params.id} ID'li antrenman kaydı silindi` });
-});
+router.route('/:id')
+  .delete(protect, deleteHistory);
 
 module.exports = router;
