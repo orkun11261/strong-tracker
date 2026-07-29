@@ -20,11 +20,13 @@ app.use(express.json());
 const authRoutes = require('./routes/authRoutes');
 const programRoutes = require('./routes/programRoutes');
 const historyRoutes = require('./routes/historyRoutes');
+const metricRoutes = require('./routes/metricRoutes');
 
 
 app.use('/api/auth', authRoutes);
 app.use('/api/programs', programRoutes);
 app.use('/api/history', historyRoutes);
+app.use('/api/metrics', metricRoutes);
 
 
 app.get('/', (req, res) => {
