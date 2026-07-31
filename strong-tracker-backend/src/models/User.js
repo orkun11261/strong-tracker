@@ -4,22 +4,25 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, 'Lütfen adınızı giriniz'],
+      required: true,
     },
     email: {
       type: String,
-      required: [true, 'Lütfen e-posta adresinizi giriniz'],
-      unique: true, 
-      lowercase: true,
+      required: true,
+      unique: true,
     },
     password: {
       type: String,
-      required: [true, 'Lütfen şifrenizi giriniz'],
-      minlength: 6,
+      required: true,
+    },
+    role: {
+      type: String,
+      enum: ['user', 'admin'],
+      default: 'user', // Yeni kaydolan herkes varsayılan olarak normal kullanıcı olur
     },
   },
   {
-    timestamps: true, 
+    timestamps: true,
   }
 );
 
