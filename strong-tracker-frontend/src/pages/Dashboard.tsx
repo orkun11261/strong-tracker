@@ -96,7 +96,10 @@ export default function Dashboard() {
                 Antrenman rutinlerini planla, egzersizlerini ve hedef set/tekrar sayılarını düzenle.
               </p>
             </div>
-            <button className="mt-6 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition duration-150 text-left cursor-pointer">
+            <button
+              onClick={() => navigate('/programs')}
+              className="mt-6 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition duration-150 text-left cursor-pointer"
+            >
               Programları Yönet &rarr;
             </button>
           </div>
